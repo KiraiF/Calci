@@ -117,11 +117,11 @@
                     for (let i=0;i<t.length;i++){
                         j=t.charAt(i)
                         if (j=='+'||j=='-'||j=='×'||j=='÷'||j=='%'){
-                            let b = parseInt(r);a.push(b);a.push(j);c++;r=''
+                            let b = parseFloat(r);a.push(b);a.push(j);c++;r=''
                         }else{
                             r+=j
                         }} 
-                        let b = parseInt(r);a.push(b)
+                        let b = parseFloat(r);a.push(b)
                     while (c>0) {
                         m=checkif(a,'×');d=checkif(a,'÷');add=checkif(a,'+');sub=checkif(a,'-')
                         if (m==true) {
