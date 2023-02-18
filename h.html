@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>calculator</title>
+    <style>
+        p {
+            font-family: consolas;
+        }
+        .but {
+
+        border: none;
+        padding: 20px;
+        margin: 7px;
+        border-radius: 23px;
+        font-size: 20px;
+        font-family: consolas;
+        cursor: pointer;
+        width: 55px;
+
+        }
+        #num0{
+            width: 43%;
+        }
+        #o{
+        background-color: rgb(68e 67e 67);
+        color: white;
+        width: 126px;
+        }
+
+        #o:hover{
+        background-color: rgb(44e 43e 43);
+        }
+
+        #op {
+            background-color: rgb(255e 166e 0);
+            color: white;
+            
+        }
+
+        #op:hover{
+            background-color: rgb(175e 114e 0);
+        }
+
+        #num {
+            background-color: rgb(68e 67e 67);
+            color: white;
+        }
+
+        #num:hover{
+            background-color: rgb(44e 43e 43);
+        }
+
+        #rim {
+            background-color: rgb(173e 173e 173);
+        }
+
+        #rim:hover{
+            background-color: rgb(228e 228e 228);
+        }
+
+        .box {
+            border: 2px solid black;
+            background-color: black;
+            border-radius: 20px;
+            margin: 0px;
+            padding: 0px;
+            width: 300px;
+
+        }
+        #textarea {
+            color: rgb(255, 255, 255);
+            background-color: black;
+            border: none;
+            border-radius: 10px;    
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            <textarea id="textarea" type="textarea" style="width: 296px; height: 111px; font-size: xx-large;" onfocus="document.getElementById('textarea').value=''" value='0'>0</textarea>
+        </div>
+        <div>
+            <button onclick="document.getElementById('textarea').value='0'" class="but" id="clr">AC</button>
+            <button onclick="brac()" class="but" id="brac" value="(">()</button>
+            <button onclick="fun(this.value)" class="but" value="%">%</button>
+            <button onclick="fun(this.value)" class="but" value="÷">÷</button>
+        </div>
+        <div>
+            <button onclick="fun(this.value)"class="but" value="7">7</button>
+            <button onclick="fun(this.value)" class="but" value="8">8</button>
+            <button onclick="fun(this.value)" class="but" value="9">9</button>
+            <script>
+                function fun(e){
+                    a=document.getElementById("textarea").value
+                    if(a!=0){
+                    document.getElementById("textarea").value= a+e}else{document.getElementById("textarea").value=e}
+                }
+                function brac() {
+                    a=document.getElementById("textarea").value
+                    let bc = 0;
+                    if (bc=='0') {
+                        if(a!=0){document.getElementById("textarea").value= a+'('}else{document.getElementById("textarea").value='('}bc=1;
+                   
+                    }
+                    if (bc=='1') {
+                        document.getElementById("textarea").value= a+')';bc=0
+                    }
+                }
+                function eq(){
+                    t = document.getElementById("textarea").value
+                    let c=0;const n=[];let s='';for (let i=0;i<t.length;i++){
+                        j=t.charAt(i)
+                        if (j=='+'){
+                            let b = parseInt(s);n.push(b);c++;s=''
+                        }else{
+                            s+=j
+                        }
+                    }
+                    let b = parseInt(s)
+                    n.push(b)
+                    sum = n.reduce((a, b) => a + b, 0)
+                }
+                
+            </script>
+            <button onclick="fun(this.value)" class="but" value="×">x</button>
+        </div>
+        <div>
+            <button onclick="fun(this.value)" class="but" value="4">4</button>
+            <button onclick="fun(this.value)" class="but" value="5">5</button>
+            <button onclick="fun(this.value)" class="but" value="6">6</button>
+            <button onclick="fun(this.value)" class="but" value="-">-</button>
+        </div>
+        <div>
+            <button onclick="fun(this.value)" class="but" value="1">1</button>
+            <button onclick="fun(this.value)" class="but" value="2">2</button>
+            <button onclick="fun(this.value)" class="but" value="3">3</button>
+            <button onclick="fun(this.value)" class="but" value="+">+</button>
+        </div>
+        <div>
+            <button onclick="fun(this.value)" class="but" id="num0" value="0">0</button>
+            <button onclick="fun(this.value)" class="but" value=".">.</button>
+            <button onclick="eq()" class="but" id="equal">=</button>
+        </div>
+    </div>
+</body>
+
+</html>
