@@ -98,14 +98,14 @@
                     if(a!=0){
                     document.getElementById("textarea").value= a+e}else{document.getElementById("textarea").value=e}
                 }
+                bc = true;
                 function brac() {
                     a=document.getElementById("textarea").value
-                    bc = 0;
-                    if (bc==0) {
-                        if(a!=0){document.getElementById("textarea").value= a+'('}else{document.getElementById("textarea").value='('};bc==1;
-                   
-                    }else if (bc==1) {
-                        document.getElementById("textarea").value= a+')';bc=0
+                    if (bc==false) {
+                        document.getElementById("textarea").value= a+')';bc=true;
+                    }else if (bc==true){
+                        if(a==0){document.getElementById("textarea").value='('}
+                            else{document.getElementById("textarea").value= a+'('};bc=false;
                     }
                     
                 }
@@ -117,11 +117,11 @@
                     for (let i=0;i<t.length;i++){
                         j=t.charAt(i)
                         if (j=='+'||j=='-'||j=='×'||j=='÷'||j=='%'){
-                            let b = parseInt(r);a.push(b);a.push(j);c++;r=''
+                            let b = parseFloat(r);a.push(b);a.push(j);c++;r=''
                         }else{
                             r+=j
                         }} 
-                        let b = parseInt(r);a.push(b)
+                        let b = parseFloat(r);a.push(b)
                     while (c>0) {
                         m=checkif(a,'×');d=checkif(a,'÷');add=checkif(a,'+');sub=checkif(a,'-')
                         if (m==true) {
