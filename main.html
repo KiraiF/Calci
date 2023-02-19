@@ -91,13 +91,25 @@
             <button onclick="document.getElementById('textarea').value='0'" class="but" id="clr">AC</button>
             <button onclick="brac()" class="but" id="brac" value="(">()</button>
             <button onclick="fun(this.value)" class="but" value="÷">÷</button>
-            <a id="bksp" onclick="" class="but" value="">⌫</a>
+            <a id="bksp" onclick="bk()" class="but" value="">⌫</a>
         </div>
         <div>
             <button onclick="fun(this.value)"class="but" value="7">7</button>
             <button onclick="fun(this.value)" class="but" value="8">8</button>
             <button onclick="fun(this.value)" class="but" value="9">9</button>
             <script>
+                function bk(){
+                    a = document.getElementById('textarea').value
+                    c = a.slice(0,-1)
+                    console.log(c)
+                    if(c==0){
+                        document.getElementById('textarea').value = 0
+                    }else{
+                        document.getElementById('textarea').value= c
+                    }
+                    console.log(c)
+                    
+                }
                 function fun(e){
                     a=document.getElementById("textarea").value
                     if(a!=0){
