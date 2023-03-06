@@ -114,7 +114,7 @@
                 function fun(e){
                     a=document.getElementById("textarea").value
                     if(a!=0){
-                    document.getElementById("textarea").value= a+e}else{document.getElementById("textarea").value=e}
+                    document.getElementById("textarea").value= a+e}else if (a==0&&e==0){document.getElementById("textarea").value= a+e}else{document.getElementById("textarea").value=e}
                 }
                 bc = true;
                 function brac() {
@@ -134,53 +134,51 @@
                     let a = [];let r='';let c=0;let s=0;
                     for (let i=0;i<t.length;i++){
                         j=t.charAt(i)
-                        if (j=='+'||j=='-'||j=='×'||j=='÷'||j=='%'){
+                        if (j=='+'||j=='-'||j=='×'||j=='÷'||j=='%'||j=='^'){
                             let b = parseFloat(r);a.push(b);a.push(j);c++;r=''
                         }else{
                             r+=j
                         }} 
                         let b = parseFloat(r);a.push(b)
                     while (c>0) {
-                        m=checkif(a,'×');d=checkif(a,'÷');add=checkif(a,'+');sub=checkif(a,'-')
-                        if (m==true) {
-                            m = a.indexOf('×')
-                            s = a[m-1]*a[m+1]
-                            a.splice(m-1,3)
-                            insertAt(a, m-1, s);
+                        m=checkif(a,'×');d=checkif(a,'÷');add=checkif(a,'+');sub=checkif(a,'-');exp=checkif(a,'^')
+                        if (exp==true){
+                            ma = a.indexOf('^')
+                            s = a[ma-1]**a[ma+1]
+                            a.splice(ma-1,3)
+                            insertAt(a, ma-1, s);
                             continue
                         }else if (d==true){
-                            m = a.indexOf('÷')
-                            s = a[m-1]/a[m+1]
-                            a.splice(m-1,3)
-                            insertAt(a, m-1, s);
+                            ma = a.indexOf('÷')
+                            s = a[ma-1]/a[ma+1]
+                            a.splice(ma-1,3)
+                            insertAt(a, ma-1, s);
                             continue
-                        }else if (add==true){
-                            m = a.indexOf('+')
-                            s = a[m-1]+a[m+1]
-                            a.splice(m-1,3)
-                            insertAt(a, m-1, s);
+                        }else if (m==true) {
+                            ma = a.indexOf('×')
+                            s = a[ma-1]*a[ma+1]
+                            a.splice(ma-1,3)
+                            insertAt(a, ma-1, s);
+                            continue
+                        }
+                        else if (add==true){
+                            ma = a.indexOf('+')
+                            s = a[ma-1]+a[ma+1]
+                            a.splice(ma-1,3)
+                            insertAt(a, ma-1, s);
                             continue
                         }else if (sub==true){
-                            m = a.indexOf('-')
-                            s = a[m-1]-a[m+1]
-                            a.splice(m-1,3)
-                            insertAt(a, m-1, s);
+                            ma = a.indexOf('-')
+                            s = a[ma-1]-a[ma+1]
+                            a.splice(ma-1,3)
+                            insertAt(a, ma-1, s);
                             continue
-                        }/*else if (exp==true){
-                            m = a.indexOf('-')
-                            s = a[m-1]-a[m+1]
-                            a.splice(m-1,3)
-                            insertAt(a, m-1, s);
-                            continue
-                        }*/c--
+                        }c--
                     }
                     document.getElementById("textarea").value=s
                 }
                 function checkif(a,v){
                     return a.includes(v)
-                }
-                function exp(held){
-
                 }
             </script>
             <button onclick="fun(this.value)" class="but" value="×">x</button>
@@ -198,7 +196,7 @@
             <button onclick="fun(this.value)" class="but" value="+">+</button>
         </div>
         <div>
-            <button onclick="exp(true)" id="ex"class="but">ⅹʸ</button>
+            <button onclick="fun('^')" id="ex"class="but">ⅹʸ</button>
             <button onclick="fun(this.value)" class="but" value="0">0</button>
             <button onclick="fun(this.value)" class="but" value=".">.</button>
             <button onclick="eq()" class="but" id="equal">=</button>
