@@ -12,8 +12,8 @@
             margin: auto auto auto;
         }
         img {
-            height: 95%;
-            width: 95%;
+            height: 100%;
+            width: 100%;
         }
         #btn{
             background-color: transparent;
@@ -28,20 +28,8 @@
         }
     </style>
     <body background="bg.png">
-        <img src="pop-close.jpg" alt="" id="img1" onclick="document.getElementById('img1').style.setProperty('display','none');
-        document.getElementById('img2').style.setProperty('display','grid');const audio = new Audio('./sound.mp3'); audio.play();
-        setTimeout(() => {
-            document.getElementById('img2').style.setProperty('display','none');
-            document.getElementById('img1').style.setProperty('display','grid');
-        }, 300);">
-        <img src="pop-open.jpg" alt="" id="img2">
-        <!-- <br>
-        <button type="submit" id="btn" onclick="document.getElementById('img1').style.setProperty('display','none');
-        document.getElementById('img2').style.setProperty('display','grid');const audio = new Audio('./sound.mp3'); audio.play();
-        setTimeout(() => {
-            document.getElementById('img2').style.setProperty('display','none');
-            document.getElementById('img1').style.setProperty('display','grid');
-        }, 300);"> <img src="paw.png" alt="" onclick="click()"></button> -->
+        <button onclick="cli()" id="btn"><img src="pop-close.jpg" alt="" id="img1">
+        <img src="pop-open.jpg" alt="" id="img2"></button>
     </body>
-    
+    <script src="function.js"></script>
 </html>
